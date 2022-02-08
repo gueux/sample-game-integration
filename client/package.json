@@ -5,19 +5,33 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "create-react-class": "^15.5.2",
+    "discord-api-types": "^0.26.0",
+    "discord.js": "^13.6.0",
     "nonce": "^1.0.4",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-scripts": "0.2.2",
-    "react-select": "^1.0.0-rc.2",
-    "superagent": "^2.2.0"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.2",
+    "react-select": "^5.2.2",
+    "superagent": "^2.2.0",
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
+    "extends": "./node_modules/eslint-config-react-app/index.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

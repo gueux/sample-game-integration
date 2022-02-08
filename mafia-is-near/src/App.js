@@ -6,7 +6,6 @@ const nonce = require('nonce')();
 const { Client, GatewayIntentBits } = require('discord.js');
 
 import './App.css';
-// import 'react-select/dist/react-select.css';
 
 let username = 'Jason';
 let startOffset = 0;
@@ -26,7 +25,7 @@ if (window.location.pathname !== '/') {
 }
 
 const VERSION = '1';
-const CLIENT_ID = '939939678059106365';
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;;
 const PORT = 6463 + startOffset;
 const NUM_PORTS_TO_SEARCH = 10 - startOffset;
 const ENCODING = 'json';

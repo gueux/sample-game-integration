@@ -1,34 +1,10 @@
 from flask import Flask, request, abort
 import json
 import requests
-from flask_cors import CORS
+
 from time import time
 import pickle
-import configparser
-import discordsdk as dsdk
 
-config = configparser.RawConfigParser()
-config.read('discord.cfg')
-
-APP_NAME = 'Mafia is NEAR'
-
-BASE_URL = 'https://discord.com/api/v8'
-
-BOT_TOKEN = config.get('DiscordOptions', 'bot_token')
-CLIENT_SECRET = config.get('DiscordOptions', 'client_secret')
-CLIENT_ID = config.get('DiscordOptions', 'client_id')
-
-REDIRECT_URI = 'localhost:3000'
-
-HEADERS = {
-    'Authorization': 'Bot {0}'.format(BOT_TOKEN),
-    'User-Agent': 'DiscordBot ({0}, 0.1)'.format(APP_NAME)
-}
-
-app = Flask(__name__)
-discord = dsdk.Discord(CLIENT_ID, dsdk.CreateFlags.default)
-
-CORS(app)  # don't do this in production
 
 ############################################################
 # Who needs a map?
@@ -232,16 +208,14 @@ def delete_all_games():
 def discord_authenticate():
     create_token_data = {
         'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET,
-        'scope': 'identify%20guilds.join',
-        'response_type': 'code'
+        'client_secret': CLIENT_SECRET
     }
-    r = requests.get(BASE_URL + '/oauth2/authorize', headers=HEADERS, params=create_token_data)
+    r = requests.post(BASE_URL + '/oauth2/token/rpc', headers=HEADERS, data=create_token_data)
     r.raise_for_status()
-    token = r.json()['token']
+    rpc_token = r.json()['rpc_token']
 
     return json.dumps({
-        'token': token
+        'rpc_token': rpc_token
     })
 
 

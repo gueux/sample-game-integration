@@ -1,0 +1,18 @@
+version: "3"
+services:
+
+  # server:
+  #   # env_file: ".env"
+  #   build: ./server
+  #   # entrypoint: ["bash"]
+  #   # stdin_open: true
+  #   # tty: true
+  #   restart: always
+  #   ports: ["5000:5000"]
+
+  client:
+    # env_file: ".env"
+    build: ./client
+    restart: always
+    # volumes: ["./docker_volumes/db:/var/lib/postgresql/data"]
+    ports: ["3000:3000"]

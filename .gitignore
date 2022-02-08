@@ -12,3 +12,4 @@ gen
 .idea/sample_game.iml
 .idea/workspace.xml
 .DS_Store
+.env
